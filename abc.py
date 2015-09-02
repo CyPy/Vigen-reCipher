@@ -1,3 +1,15 @@
+"""
+The Vigenere cipher is a modified caesar-shift cipher wherein the key
+is not a number, but an n-letter string. Each letter in the key string
+specifies the cipher that shall be used to encode/decode the message.
+The "x-cipher", where x is a letter, is that caesar cipher which causes
+the letter 'a' to be encoded as 'x'.
+
+Example:
+plaintext -> "PLAINTEXT",
+key -> "KEY",
+ciphertext -> "zpysrrobr".
+"""
 alphabets = "abcdefghijklmnopqrstuvwxyz"
 
 def encode(plaintext, key):
