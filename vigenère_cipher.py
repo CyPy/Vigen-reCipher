@@ -10,6 +10,7 @@ plaintext -> "PLAINTEXT",
 key -> "KEY",
 ciphertext -> "zpysrrobr".
 """
+
 alphabets = "abcdefghijklmnopqrstuvwxyz"
 
 def encode(plaintext, key):
@@ -17,14 +18,18 @@ def encode(plaintext, key):
 	Encodes the plaintext using the key provided and 
 	returns the ciphertext.
 	"""
+	
 	plaintext = plaintext.lower()
 	key = key.lower()
+	
 	for i in key:
 		if (ord(i)<97 or ord(i)>122) :
 			return "Invalid Key: Key can only have alphabets i.e. no special characters or spaces."
+	
 	ciphertext = ""
 	length = len(key)
 	x=0
+	
 	for i in plaintext:
 		if (alphabets.find(i) != -1):
 			finalIndex = (alphabets.find(i) + ord(key[x]) - 97) % 26
@@ -35,6 +40,7 @@ def encode(plaintext, key):
 				x = x + 1
 		else:
 			ciphertext += i
+	
 	return ciphertext
 
 
@@ -44,14 +50,18 @@ def decode(ciphertext, key):
 	Decodes the ciphertext using the key provided and
 	returns the plaintext.
 	"""
+	
 	ciphertext = ciphertext.lower()
 	key = key.lower()
+	
 	for i in key:
 		if (ord(i)<97 or ord(i)>122) :
 			return "Invalid Key: Key can only have alphabets i.e. no special characters or spaces."			
+	
 	plaintext = ""
 	length = len(key)
 	x=0
+	
 	for i in ciphertext:
 		if (alphabets.find(i) != -1):
 			if ((alphabets.find(i) - ord(key[x]) + 97) > 0):
@@ -65,5 +75,6 @@ def decode(ciphertext, key):
 				x = x + 1 
 		else:
 			plaintext += i
+	
 	return plaintext
 
